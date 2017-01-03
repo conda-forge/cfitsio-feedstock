@@ -11,6 +11,8 @@ source:
   fn: {{ name }}{{ nodotversion }}.tar.gz
   url: ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/{{ name }}{{ nodotversion }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - ldflags.patch
 
 build:
   number: 1
