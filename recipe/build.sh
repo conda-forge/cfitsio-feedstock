@@ -2,8 +2,8 @@
 
 set -e
 
-./configure --prefix=$PREFIX || { cat config.log ; exit 1 ; }
-make stand_alone utils
+./configure --prefix=$PREFIX --enable-reentrant || { cat config.log ; exit 1 ; }
+make stand_alone shared utils
 
 # test-ish programs:
 ./cookbook
