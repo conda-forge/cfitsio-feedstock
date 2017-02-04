@@ -18,4 +18,4 @@ make stand_alone utils
 make shared
 make install
 
-# NOTE: don't remove .a files! That's all we provide!
+rm -f $PREFIX/lib/libcfitsio.a $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog

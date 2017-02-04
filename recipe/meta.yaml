@@ -25,7 +25,6 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/libcfitsio.a
     - test -f ${PREFIX}/lib/libcfitsio.so  # [linux]
     - test -f ${PREFIX}/lib/libcfitsio.dylib  # [osx]
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
