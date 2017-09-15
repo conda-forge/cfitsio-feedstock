@@ -19,3 +19,8 @@ make shared
 make install
 
 rm -f $PREFIX/lib/libcfitsio.a $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
+
+# Install additional headers needed by some downstream software, which
+# for some reasons are not installed by "make install"
+cp cfortran.h ${PREFIX}/include
+cp f77_wrap.h ${PREFIX}/include
