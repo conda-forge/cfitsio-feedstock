@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "3.410" %}
-{% set nodotversion = "3410" %}
-{% set sha256 = "a556ac7ea1965545dcb4d41cfef8e4915eeb8c0faa1b52f7ff70870f8bb5734c" %}
+{% set version = "3.420" %}
+{% set nodotversion = version | replace('.', '') %}
+{% set sha256 = "6c10aa636118fa12d9a5e2e66f22c6436fb358da2af6dbf7e133c142e2ac16b8" %}
 
 package:
   name: {{ name }}
@@ -15,7 +15,7 @@ source:
     - ldflags.patch
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
