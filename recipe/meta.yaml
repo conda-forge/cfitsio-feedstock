@@ -21,7 +21,10 @@ build:
 
 requirements:
   build:
+    - curl 7.55.*
     - toolchain
+  run:
+    - curl >=7.55.0,<8
 
 test:
   commands:
