@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "3.410" %}
-{% set nodotversion = "3410" %}
-{% set sha256 = "a556ac7ea1965545dcb4d41cfef8e4915eeb8c0faa1b52f7ff70870f8bb5734c" %}
+{% set version = "3.420" %}
+{% set nodotversion = version | replace('.', '') %}
+{% set sha256 = "ee59f1178e1c0f697f39226b05356eac9bc61020dd2676e64600fd8e60f73909" %}
 
 package:
   name: {{ name }}
@@ -9,19 +9,23 @@ package:
 
 source:
   fn: {{ name }}{{ nodotversion }}.tar.gz
-  url: ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/{{ name }}{{ nodotversion }}.tar.gz
+  url: http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}{{ nodotversion }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - ldflags.patch
+    - mac_64only.patch
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: true
   skip: true  # [win]
 
 requirements:
   build:
+    - curl 7.55.*
     - toolchain
+  run:
+    - curl >=7.55.0,<8
 
 test:
   commands:
