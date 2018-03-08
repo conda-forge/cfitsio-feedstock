@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "3.420" %}
+{% set version = "3.430" %}
 {% set nodotversion = version | replace('.', '') %}
-{% set sha256 = "ee59f1178e1c0f697f39226b05356eac9bc61020dd2676e64600fd8e60f73909" %}
+{% set sha256 = "dc8e2725bebbbf25a0837161dbe2f670f8e97589fb074bae86a6b417bf681ebc" %}
 
 package:
   name: {{ name }}
