@@ -29,10 +29,12 @@ build:
 
 requirements:
   build:
-    - curl 7.55.*
-    - toolchain
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+  host:
+    - curl
   run:
-    - curl >=7.55.0,<8
+    - curl
 
 test:
   commands:
