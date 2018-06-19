@@ -14,14 +14,16 @@ Summary: A library for reading and writing FITS files
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/cfitsio-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/cfitsio-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/cfitsio-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/cfitsio-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/cfitsio-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/cfitsio-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/cfitsio-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/cfitsio-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cfitsio/badges/version.svg)](https://anaconda.org/conda-forge/cfitsio)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/cfitsio/badges/downloads.svg)](https://anaconda.org/conda-forge/cfitsio)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-cfitsio-green.svg)](https://anaconda.org/conda-forge/cfitsio) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cfitsio.svg)](https://anaconda.org/conda-forge/cfitsio) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cfitsio.svg)](https://anaconda.org/conda-forge/cfitsio) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/cfitsio.svg)](https://anaconda.org/conda-forge/cfitsio) |
 
 Installing cfitsio
 ==================
