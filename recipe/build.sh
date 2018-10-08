@@ -18,4 +18,4 @@ make stand_alone utils
 make shared
 make install
 
-rm -f $PREFIX/lib/libcfitsio.a $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
+rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
