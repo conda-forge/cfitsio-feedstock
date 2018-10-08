@@ -31,7 +31,6 @@ requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
-    - binutils # try a workaround temporary  
     
   host:
     - curl
