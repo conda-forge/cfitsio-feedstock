@@ -40,6 +40,8 @@ test:
   commands:
     - test -f ${PREFIX}/lib/libcfitsio.so  # [linux]
     - test -f ${PREFIX}/lib/libcfitsio.dylib  # [osx]
+    - if not exist %LIBRARY_LIB%\cfitsio.lib exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\cfitsio.dll exit 1  # [win]
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
