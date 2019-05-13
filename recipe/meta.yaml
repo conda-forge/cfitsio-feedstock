@@ -23,18 +23,18 @@ source:
     - mac_64only.patch
 
 build:
-  number: 1001
+  number: 1002
   detect_binary_files_with_prefix: true
-  skip: true  # [win]
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
+    - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('c') }}
+    - cmake  # [win]
   host:
-    - curl
+    - curl  # [not win]
   run:
-    - curl
+    - curl  # [not win]
 
 test:
   commands:
