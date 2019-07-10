@@ -9,6 +9,12 @@ Feedstock license: BSD 3-Clause
 
 Summary: A library for reading and writing FITS files
 
+CFITSIO is a library of C and Fortran subroutines for reading and writing
+data files in FITS (Flexible Image Transport System) data format. CFITSIO
+provides simple high-level routines for reading and writing FITS files that
+insulate the programmer from the internal complexities of the FITS format.
+CFITSIO also provides many advanced features for manipulating and filtering
+the information in FITS files.
 
 
 Current build status
@@ -158,4 +164,5 @@ Feedstock Maintainers
 =====================
 
 * [@pkgw](https://github.com/pkgw/)
+* [@teake](https://github.com/teake/)
 
