@@ -7,15 +7,17 @@ if [ $(uname) = Darwin ] ; then
     export CFLAGS="$CFLAGS -D_DARWIN_C_SOURCE"
 fi
 
-./configure --prefix=$PREFIX --enable-reentrant || { cat config.log ; exit 1 ; }
-make stand_alone utils
+./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }
 
-# test-ish programs:
-./cookbook
-./speed
-./testprog
-
-make shared
+make shared utils
 make install
+
+# Test-ish programs:
+$PREFIX/bin/cookbook
+$PREFIX/bin/speed
+# Actual test suite as described in docs/cfitsio.doc
+$PREFIX/bin/testprog > testprog.lis
+diff testprog.lis testprog.out
+cmp testprog.fit testprog.std
 
 rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
