@@ -15,8 +15,10 @@ source:
     - ldflags.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py27]
+  run_exports:
+    - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
 requirements:
   build:
@@ -29,12 +31,9 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libcfitsio.so  # [linux]
-    - test -f ${PREFIX}/lib/libcfitsio.dylib  # [osx]
+    - test -f ${PREFIX}/lib/libcfitsio{{ SHLIB_EXT }}  # [not win]
     - if not exist %LIBRARY_LIB%\cfitsio.lib exit 1  # [win]
     - if not exist %LIBRARY_BIN%\cfitsio.dll exit 1  # [win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
