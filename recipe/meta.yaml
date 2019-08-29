@@ -25,7 +25,7 @@ requirements:
     - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('c') }}
     - cmake  # [win]
-    - make
+    - make  # [not win]
   host:
     - libcurl  # [not win]
     - bzip2  # [not win]
