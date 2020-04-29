@@ -37,6 +37,8 @@ test:
     - test -f ${PREFIX}/lib/libcfitsio{{ SHLIB_EXT }}  # [not win]
     - if not exist %LIBRARY_LIB%\cfitsio.lib exit 1  # [win]
     - if not exist %LIBRARY_BIN%\cfitsio.dll exit 1  # [win]
+  downstreams:
+    - gdal
 
 about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
