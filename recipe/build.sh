@@ -5,7 +5,7 @@ set -e
 if [ $(uname) = Darwin ] ; then
     # Needed to get 'union semun' definition used in drvrsmem.c:
     export CFLAGS="$CFLAGS -D_DARWIN_C_SOURCE"
-    export LIBS="$LIBS -lz -Wl,-reexport_library,$PREFIX/lib/libz.dylib"
+    export LIBS_PREPEND="-Wl,-reexport_library,$PREFIX/lib/libz.dylib"
 fi
 
 ./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }
