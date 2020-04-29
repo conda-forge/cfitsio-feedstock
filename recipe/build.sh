@@ -25,10 +25,6 @@ rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
 
 # check symbol exports on osx
 if [ $(uname) = Darwin ]; then
-    ${OTOOL} -l $PREFIX/lib/libcfitsio.dylib 
-    if [ -z `${NM} -D $PREFIX/lib/libcfitsio.dylib | grep crc32` ]; then
-        ${NM} -D $PREFIX/lib/libcfitsio.dylib
-        exit 1
-    fi
+    ${OTOOL} -l $PREFIX/lib/libcfitsio.dylib | grep "LC_REEXPORT_DYLIB"
 fi
     
