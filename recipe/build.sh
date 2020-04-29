@@ -5,6 +5,7 @@ set -e
 if [ $(uname) = Darwin ] ; then
     # Needed to get 'union semun' definition used in drvrsmem.c:
     export CFLAGS="$CFLAGS -D_DARWIN_C_SOURCE"
+    export LDFLAGS="$LDFLAGS -Xlinker -reexport_library $PREFIX/lib/libz.dylib"
 fi
 
 ./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }
@@ -21,3 +22,10 @@ diff testprog.lis testprog.out
 cmp testprog.fit testprog.std
 
 rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
+
+# check symbol exports on osx
+if [ -z `${NM} -g $PREFIX/lib/libcfitsio.dylib | grep crc32` ]; then
+    ${NM} -g $PREFIX/lib/libcfitsio.dylib
+    exit 1
+fi
+    
