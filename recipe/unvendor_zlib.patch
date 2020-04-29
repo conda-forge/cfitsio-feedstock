@@ -18,7 +18,7 @@ zlib is vendored. Unvendor it like suse/ubuntu do as well.
  
  lib${PACKAGE}${SHLIB_SUFFIX}: ${OBJECTS}
 -		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS}
-+		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS} -lz
++		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_PREPEND} ${LIBS_CURL} ${LIBS} -lz
  		@if [ "x${CFITSIO_SHLIB_SONAME}" != x ]; then \
  			ln -sf ${CFITSIO_SHLIB} ${CFITSIO_SHLIB_SONAME}; \
  			ln -sf ${CFITSIO_SHLIB_SONAME} $@; \
