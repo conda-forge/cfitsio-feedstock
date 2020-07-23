@@ -5,7 +5,7 @@ Home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
 
 Package license: fitsio
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A library for reading and writing FITS files
 
