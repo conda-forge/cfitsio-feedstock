@@ -14,10 +14,18 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '7'
+gdal:
+- '3.0'
 libcurl:
 - '7'
 pin_run_as_build:
   bzip2:
     max_pin: x
+  gdal:
+    max_pin: x.x
   libcurl:
     max_pin: x
+  zlib:
+    max_pin: x.x
+zlib:
+- '1.2'
