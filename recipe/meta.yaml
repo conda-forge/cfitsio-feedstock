@@ -17,7 +17,7 @@ source:
     - lcurl-pkg-config.patch
 
 build:
-  number: 6
+  number: 7
   skip: True  # [win and py27]
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
