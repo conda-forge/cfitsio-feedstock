@@ -24,6 +24,7 @@ build:
 
 requirements:
   build:
+    - libtool  # [unix]
     - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('c') }}
     - cmake  # [win]
