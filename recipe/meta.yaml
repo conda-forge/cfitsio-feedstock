@@ -24,6 +24,7 @@ build:
 
 requirements:
   build:
+    - libtool  # [unix]
     - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('c') }}
     - cmake  # [win]
@@ -43,7 +44,7 @@ test:
 
 about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
-  license: fitsio
+  license: LicenseRef-fitsio
   license_file: License.txt
   summary: "A library for reading and writing FITS files"
 

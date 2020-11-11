@@ -1,4 +1,6 @@
 #! /bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
 set -e
 
@@ -13,13 +15,15 @@ fi
 make shared utils
 make install
 
-# Test-ish programs:
-$PREFIX/bin/cookbook
-$PREFIX/bin/speed
-# Actual test suite as described in docs/cfitsio.doc
-$PREFIX/bin/testprog > testprog.lis
-diff testprog.lis testprog.out
-cmp testprog.fit testprog.std
+if [ ${CONDA_BUILD_CROSS_COMPILATION:-0} -eq 0 ] ; then
+    # Test-ish programs:
+    $PREFIX/bin/cookbook
+    $PREFIX/bin/speed
+    # Actual test suite as described in docs/cfitsio.doc
+    $PREFIX/bin/testprog > testprog.lis
+    diff testprog.lis testprog.out
+    cmp testprog.fit testprog.std
+fi
 
 rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
 
@@ -27,4 +31,3 @@ rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
 if [ $(uname) = Darwin ]; then
     ${OTOOL} -l $PREFIX/lib/libcfitsio.dylib | grep "LC_REEXPORT_DYLIB"
 fi
-    
