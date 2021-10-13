@@ -1,15 +1,14 @@
 {% set name = "cfitsio" %}
-{% set version = "3.470" %}
-{% set nozeroversion = version[:-1] %}
+{% set version = "4.0.0" %}
 # This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "985606e058403c073a68d95be74e9696f0ded9414520784457a1d4cba8cca7e2" %}
+{% set sha256 = "88735b69bb017ee92823b9e7ee14efeae2e57fb6c00503ed3aa2820e850a7b5e" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ nozeroversion }}.tar.gz
+  url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - ldflags.patch
@@ -17,7 +16,7 @@ source:
     - lcurl-pkg-config.patch
 
 build:
-  number: 7
+  number: 0
   skip: True  # [win and py27]
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
