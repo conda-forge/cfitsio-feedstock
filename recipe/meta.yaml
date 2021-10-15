@@ -29,7 +29,7 @@ requirements:
     - cmake  # [win]
     - make  # [not win]
   host:
-    - libcurl  # [not win]
+    - libcurl
     - bzip2  # [not win]
     - zlib
 
