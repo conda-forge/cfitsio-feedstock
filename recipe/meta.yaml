@@ -31,7 +31,7 @@ requirements:
   host:
     - libcurl  # [not win]
     - bzip2  # [not win]
-    - zlib  # [not win]
+    - zlib
 
 test:
   commands:
