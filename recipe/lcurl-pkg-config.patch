@@ -1,10 +1,12 @@
---- cfitsio.pc.in.orig	2019-05-08 08:34:49.000000000 -0700
-+++ cfitsio.pc.in	2020-07-22 22:50:44.048052147 -0700
-@@ -7,6 +7,6 @@
+diff --git a/cfitsio.pc.in b/cfitsio.pc.in
+index 7cc25c6..3ab109f 100644
+--- a/cfitsio.pc.in
++++ b/cfitsio.pc.in
+@@ -7,6 +7,6 @@ Name: cfitsio
  Description: FITS File Subroutine Library
  URL: https://heasarc.gsfc.nasa.gov/fitsio/
- Version: @CFITSIO_MAJOR@.@CFITSIO_MINOR@
--Libs: -L${libdir} -lcfitsio @LIBS@
-+Libs: -L${libdir} -lcfitsio -lcurl @LIBS@
- Libs.private: -lm
+ Version: @CFITSIO_MAJOR@.@CFITSIO_MINOR@.@CFITSIO_MICRO@
+-Libs: -L${libdir} -lcfitsio
++Libs: -L${libdir} -lcfitsio -lcurl
+ Libs.private: -lm @LIBS@
  Cflags: -I${includedir}

@@ -1,8 +1,10 @@
 The author of configure.in made quite a strange strange decision here ...
 
---- configure.orig	2017-01-03 00:06:19.377476176 -0500
-+++ configure	2017-01-03 00:06:43.074590422 -0500
-@@ -4165,7 +4165,7 @@
+diff --git a/configure b/configure
+index 3d537ab..ca33b8d 100755
+--- a/configure
++++ b/configure
+@@ -4306,7 +4306,7 @@ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
  ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
  ac_compiler_gnu=$ac_cv_c_compiler_gnu
  

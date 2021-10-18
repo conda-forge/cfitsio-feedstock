@@ -2,12 +2,12 @@
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
-set -e
+set -ex
 
 if [ $(uname) = Darwin ] ; then
     # Needed to get 'union semun' definition used in drvrsmem.c:
     export CFLAGS="$CFLAGS -D_DARWIN_C_SOURCE"
-    export LIBS_PREPEND="-Wl,-reexport_library,$PREFIX/lib/libz.dylib"
+    export LDFLAGS="$LDFLAGS -Wl,-reexport_library,$PREFIX/lib/libz.dylib"
 fi
 
 ./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }

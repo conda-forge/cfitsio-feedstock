@@ -1,28 +1,19 @@
 zlib is vendored. Unvendor it like suse/ubuntu do as well.
 
+diff --git a/Makefile.in b/Makefile.in
+index d607eec..39ceb0a 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -68,9 +68,7 @@ CORE_SOURCES = 	buffers.c cfileio.c checksum.c drvrfile.c drvrmem.c \
- 		pliocomp.c fits_hcompress.c fits_hdecompress.c \
- 		simplerng.c @GSIFTP_SRC@
- 
--ZLIB_SOURCES =	zlib/adler32.c zlib/crc32.c zlib/deflate.c zlib/infback.c \
--		zlib/inffast.c zlib/inflate.c zlib/inftrees.c zlib/trees.c \
--		zlib/uncompr.c zlib/zcompress.c zlib/zuncompress.c zlib/zutil.c
-+ZLIB_SOURCES =	zlib/zcompress.c zlib/zuncompress.c
- 
- SOURCES = ${CORE_SOURCES} ${ZLIB_SOURCES} @F77_WRAPPERS@
- 
-@@ -103,7 +101,7 @@ lib${PACKAGE}.a:	${OBJECTS}
+@@ -102,7 +102,7 @@ lib${PACKAGE}.a:	${OBJECTS}
  shared: lib${PACKAGE}${SHLIB_SUFFIX}
  
  lib${PACKAGE}${SHLIB_SUFFIX}: ${OBJECTS}
 -		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS}
-+		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_PREPEND} ${LIBS_CURL} ${LIBS} -lz
++		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS} -lz
  		@if [ "x${CFITSIO_SHLIB_SONAME}" != x ]; then \
  			ln -sf ${CFITSIO_SHLIB} ${CFITSIO_SHLIB_SONAME}; \
  			ln -sf ${CFITSIO_SHLIB_SONAME} $@; \
-@@ -140,28 +138,28 @@ swapproc.o:	swapproc.c
+@@ -140,28 +140,28 @@ swapproc.o:	swapproc.c
  		${CC} -c ${CFLAGS} ${CPPFLAGS} ${SSE_FLAGS} ${DEFS} $<
  
  smem:		smem.o lib${PACKAGE}.a ${OBJECTS}
@@ -59,4 +50,3 @@ zlib is vendored. Unvendor it like suse/ubuntu do as well.
  
  eval:		# Rebuild eval_* files from flex/bison source
  		${FLEX} -t eval.l > eval_l.c1
--- 
