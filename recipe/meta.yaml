@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "4.0.0" %}
+{% set version = "4.1.0" %}
 # This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "88735b69bb017ee92823b9e7ee14efeae2e57fb6c00503ed3aa2820e850a7b5e" %}
+{% set sha256 = "748994dd1c819b88567e3539ea1f0ec2dd39fc0ed2884c033afa3da66efb5f4e" %}
 
 package:
   name: {{ name }}
@@ -17,7 +17,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win and py27]
+  skip: true  # [win and py27]
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
@@ -45,7 +45,7 @@ about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
   license: LicenseRef-fitsio
   license_file: License.txt
-  summary: "A library for reading and writing FITS files"
+  summary: A library for reading and writing FITS files
 
   description: |
     CFITSIO is a library of C and Fortran subroutines for reading and writing
