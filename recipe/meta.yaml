@@ -13,11 +13,9 @@ source:
   patches:
     - ldflags.patch
     - unvendor_zlib.patch
-    - lcurl-pkg-config.patch
 
 build:
   number: 0
-  skip: true  # [win and py27]
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
