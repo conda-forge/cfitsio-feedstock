@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "4.1.0" %}
+{% set version = "4.2.0" %}
 # This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "748994dd1c819b88567e3539ea1f0ec2dd39fc0ed2884c033afa3da66efb5f4e" %}
+{% set sha256 = "ef9881973ecb9fe55732a4c1bb5ca96e63b624728f6319556939e0fe25f495e8" %}
 
 package:
   name: {{ name }}
@@ -13,11 +13,9 @@ source:
   patches:
     - ldflags.patch
     - unvendor_zlib.patch
-    - lcurl-pkg-config.patch
 
 build:
   number: 0
-  skip: true  # [win and py27]
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
