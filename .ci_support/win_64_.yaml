@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 libcurl:
-- '7'
+- '8'
 target_platform:
 - win-64
 zlib:

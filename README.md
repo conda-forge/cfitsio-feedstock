@@ -1,11 +1,11 @@
-About cfitsio
-=============
+About cfitsio-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cfitsio-feedstock/blob/main/LICENSE.txt)
 
 Home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
 
 Package license: LicenseRef-fitsio
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cfitsio-feedstock/blob/main/LICENSE.txt)
 
 Summary: A library for reading and writing FITS files
 
