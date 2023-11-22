@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "4.3.0" %}
+{% set version = "4.3.1" %}
 # This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "734ab0198714fe43eab94a67d6987085bde5573e6babde4d05799a8d04ebb04c" %}
+{% set sha256 = "2332b965d327a15c103a7d31d6d1afaf775d00e9785dd25332ae76b9725351e4" %}
 
 package:
   name: {{ name }}
