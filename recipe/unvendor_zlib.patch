@@ -1,52 +1,60 @@
 zlib is vendored. Unvendor it like suse/ubuntu do as well.
 
 diff --git a/Makefile.in b/Makefile.in
-index d607eec..39ceb0a 100644
+index d1dfb23..c092fa8 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -102,7 +102,7 @@ lib${PACKAGE}.a:	${OBJECTS}
+@@ -103,7 +103,7 @@ lib${PACKAGE}.a:	${OBJECTS}
  shared: lib${PACKAGE}${SHLIB_SUFFIX}
  
  lib${PACKAGE}${SHLIB_SUFFIX}: ${OBJECTS}
 -		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS}
-+		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS} -lz
++		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm -lz ${LIBS_CURL} ${LIBS}
  		@if [ "x${CFITSIO_SHLIB_SONAME}" != x ]; then \
  			ln -sf ${CFITSIO_SHLIB} ${CFITSIO_SHLIB_SONAME}; \
  			ln -sf ${CFITSIO_SHLIB_SONAME} $@; \
-@@ -140,28 +140,28 @@ swapproc.o:	swapproc.c
- 		${CC} -c ${CFLAGS} ${CPPFLAGS} ${SSE_FLAGS} ${DEFS} $<
+@@ -169,34 +169,34 @@ utilities/fvrf_misc.o: utilities/fvrf_misc.c
+ 		${CC} -c -I. -I./utilities -DSTANDALONE $< -o $@
  
- smem:		smem.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm -lz
+ fitsverify:	lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS} ${FVERIFY_OBJ}
+-		${CC} ${LDFLAGS_BIN} -o $@ ${FVERIFY_OBJ} -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} -o $@ ${FVERIFY_OBJ} -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- testprog:	testprog.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ fpack:		utilities/fpack.o utilities/fpackutil.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< utilities/fpackutil.o -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< utilities/fpackutil.o -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- fpack:		fpack.o fpackutil.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o fpackutil.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o fpackutil.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ funpack:	utilities/funpack.o utilities/fpackutil.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< utilities/fpackutil.o -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< utilities/fpackutil.o -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- funpack:	funpack.o fpackutil.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o fpackutil.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o fpackutil.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ smem:		utilities/smem.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz
  
- fitscopy:	fitscopy.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ testprog:	utilities/testprog.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- speed:		speed.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ fitscopy:	utilities/fitscopy.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- imcopy:		imcopy.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ speed:		utilities/speed.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- cookbook:	cookbook.o lib${PACKAGE}.a ${OBJECTS}
--		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS}
-+		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm ${LIBS} -lz
+ imcopy:		utilities/imcopy.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
  
- eval:		# Rebuild eval_* files from flex/bison source
- 		${FLEX} -t eval.l > eval_l.c1
+ cookbook:	utilities/cookbook.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
+ 
+ testf77:	utilities/testf77.o lib${PACKAGE}${SHLIB_SUFFIX} ${OBJECTS}
+-		${FC} ${LDFLAGS_BIN} -o $@ $< -L. -l${PACKAGE} -lm ${LIBS}
++		${FC} ${LDFLAGS_BIN} -o $@ $< -L. -l${PACKAGE} -lm -lz ${LIBS}
+ 
+ # eval: ==================================================================
+ 

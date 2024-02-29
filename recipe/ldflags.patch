@@ -1,12 +1,12 @@
 The author of configure.in made quite a strange strange decision here ...
 
 diff --git a/configure b/configure
-index 3d537ab..ca33b8d 100755
+index c1ab860..88d0c08 100755
 --- a/configure
 +++ b/configure
-@@ -4306,7 +4306,7 @@ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
- ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
- ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -3994,7 +3994,7 @@ fi
+ 
+ #-------------------------------------------------------------------------------
  
 -LDFLAGS="$CFLAGS"
 +#LDFLAGS="$CFLAGS"
