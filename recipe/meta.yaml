@@ -1,7 +1,7 @@
 {% set name = "cfitsio" %}
-{% set version = "4.4.0" %}
+{% set version = "4.4.1" %}
 # This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "c42bd609151c0b0d7c4f3578d425ae7aaa9afa4828cab35c0accea588e290c29" %}
+{% set sha256 = "d049c22c95ef7ebbc8393e14f336dccbe605221cd15a28622be0753e48b3312e" %}
 
 package:
   name: {{ name }}
@@ -15,7 +15,7 @@ source:
     - unvendor_zlib.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
@@ -24,6 +24,7 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('fortran') }}  # [not win]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake  # [win]
     - make  # [not win]
   host:
@@ -47,8 +48,8 @@ test:
 
 about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
-  license: NASA-1.3
-  license_file: licenses/NASA_Open_Source_Agreement_1.3.txt
+  license: LicenseRef-fitsio
+  license_file: licenses/License.txt
   summary: A library for reading and writing FITS files
 
   description: |

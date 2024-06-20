@@ -11,4 +11,4 @@ libcurl:
 target_platform:
 - win-64
 zlib:
-- '1.2'
+- '1'
