@@ -12,7 +12,7 @@ fi
 
 ./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }
 
-make shared utils
+make all
 make install
 
 if [ ${CONDA_BUILD_CROSS_COMPILATION:-0} -eq 0 ] ; then
@@ -20,12 +20,12 @@ if [ ${CONDA_BUILD_CROSS_COMPILATION:-0} -eq 0 ] ; then
     $PREFIX/bin/cookbook
     $PREFIX/bin/speed
     # Actual test suite as described in docs/cfitsio.doc
-    $PREFIX/bin/testprog > testprog.lis
+    ./testprog > testprog.lis
     diff testprog.lis testprog.out
     cmp testprog.fit testprog.std
 fi
 
-rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed $PREFIX/bin/testprog
+rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed
 
 # check symbol exports on osx
 if [ $(uname) = Darwin ]; then

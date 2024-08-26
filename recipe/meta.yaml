@@ -10,9 +10,6 @@ package:
 source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - ldflags.patch
-    - unvendor_zlib.patch
 
 build:
   number: 0
