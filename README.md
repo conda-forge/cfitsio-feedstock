@@ -210,6 +210,3 @@ Feedstock Maintainers
 * [@pkgw](https://github.com/pkgw/)
 * [@teake](https://github.com/teake/)
 
-
-<!-- dummy commit to enable rerendering -->
-
