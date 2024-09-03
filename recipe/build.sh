@@ -7,7 +7,7 @@ set -ex
 if [ $(uname) = Darwin ] ; then
     # Needed to get 'union semun' definition used in drvrsmem.c:
     export CFLAGS="$CFLAGS -D_DARWIN_C_SOURCE"
-    export LDFLAGS="$LDFLAGS -Wl,-reexport_library=$PREFIX/lib/libz.dylib"
+    export LDFLAGS="$LDFLAGS -Wl,-reexport_library,$PREFIX/lib/libz.dylib"
 fi
 
 ./configure --prefix=$PREFIX --with-bzip2 --enable-reentrant || { cat config.log ; exit 1 ; }
@@ -27,7 +27,11 @@ fi
 
 rm -f $PREFIX/bin/cookbook $PREFIX/bin/speed
 
+# as of cfitsio 4.5.0, the build system change and this reexport no longer works
+# for now we have removed the test for the symbols
+# they were needed when we unbundled zlib and hopefully now
+# downstream packages have adjusted
 # check symbol exports on osx
-if [ $(uname) = Darwin ]; then
-    ${OTOOL} -l $PREFIX/lib/libcfitsio.dylib | grep "LC_REEXPORT_DYLIB"
-fi
+# if [ $(uname) = Darwin ]; then
+#     ${OTOOL} -l $PREFIX/lib/libcfitsio.dylib | grep "LC_REEXPORT_DYLIB"
+# fi
