@@ -7,11 +7,13 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
 - '11.0'
+cfitsio:
+- 4.3.1
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,7 +21,7 @@ channel_targets:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 libcurl:
 - '8'
 macos_machine:
