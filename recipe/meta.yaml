@@ -15,14 +15,14 @@ source:
     - unvendor_zlib.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
 requirements:
   build:
     - libtool  # [unix]
-    - {{ compiler('fortran') }}  # [not win]
+    - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - cmake  # [win]
