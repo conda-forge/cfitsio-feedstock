@@ -10,20 +10,23 @@ package:
 source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - cmake-libdest.patch
 
 build:
   number: 0
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
+  ignore_run_exports_from:
+    - {{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
 
 requirements:
   build:
-    - libtool  # [unix]
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
     - {{ stdlib("c") }}
-    - cmake  # [win]
-    - make  # [not win]
+    - cmake
+    - ninja
   host:
     - libcurl
     - bzip2  # [not win]
