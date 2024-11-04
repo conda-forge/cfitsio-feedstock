@@ -15,7 +15,7 @@ source:
     - unvendor_zlib.patch
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
 
