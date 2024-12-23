@@ -1,7 +1,6 @@
 {% set name = "cfitsio" %}
-{% set version = "4.4.1" %}
-# This is the SHA256 hash of the ungzipped tar file. See https://github.com/conda/conda/issues/3798.
-{% set sha256 = "d049c22c95ef7ebbc8393e14f336dccbe605221cd15a28622be0753e48b3312e" %}
+{% set version = "4.5.0" %}
+{% set sha256 = "e4854fc3365c1462e493aa586bfaa2f3d0bb8c20b75a524955db64c27427ce09" %}
 
 package:
   name: {{ name }}
@@ -11,22 +10,23 @@ source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - ldflags.patch
-    - unvendor_zlib.patch
+    - cmake-libdest.patch
+    - ffpkyt-fix.patch  # see https://github.com/HEASARC/cfitsio/issues/32
 
 build:
-  number: 2
+  number: 0
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
+  ignore_run_exports_from:
+    - {{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
 
 requirements:
   build:
-    - libtool  # [unix]
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
     - {{ stdlib("c") }}
-    - cmake  # [win]
-    - make  # [not win]
+    - cmake
+    - ninja
   host:
     - libcurl
     - bzip2  # [not win]
@@ -43,8 +43,8 @@ test:
   # of cfitsio (4.1.0 say) in a downstream test of gdal.
   # Downstream tests could be enabled again if there are no foreseeable new versions
   # cfitsio.
-#  downstreams:
-#    - gdal  # [x86_64]
+  # downstreams:
+  #   - gdal  # [x86_64]
 
 about:
   home: http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html
