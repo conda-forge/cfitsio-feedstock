@@ -9,9 +9,6 @@ package:
 source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - cmake-libdest.patch
-    - ffpkyt-fix.patch  # see https://github.com/HEASARC/cfitsio/issues/32
 
 build:
   number: 0
