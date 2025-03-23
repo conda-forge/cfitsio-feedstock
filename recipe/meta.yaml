@@ -9,6 +9,8 @@ package:
 source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - windows-sys-time.patch  # [win]
 
 build:
   number: 0
