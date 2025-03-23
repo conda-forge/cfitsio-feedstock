@@ -1,6 +1,6 @@
 {% set name = "cfitsio" %}
-{% set version = "4.5.0" %}
-{% set sha256 = "e4854fc3365c1462e493aa586bfaa2f3d0bb8c20b75a524955db64c27427ce09" %}
+{% set version = "4.6.0" %}
+{% set sha256 = "7c372fdb4e6cf530fc12294ae0b7f1fdd0ed85062790277a60aea56c97b0d3e7" %}
 
 package:
   name: {{ name }}
@@ -10,8 +10,7 @@ source:
   url: https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - cmake-libdest.patch
-    - ffpkyt-fix.patch  # see https://github.com/HEASARC/cfitsio/issues/32
+    - windows-sys-time.patch  # [win]
 
 build:
   number: 0
