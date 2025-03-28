@@ -3,9 +3,8 @@ mkdir build
 cd build
 
 cmake -G "NMake Makefiles" ^
-  -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+  %CMAKE_ARGS% ^
   -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
-  -D CMAKE_BUILD_TYPE=Release ^
   -D TESTS=On ^
   -D UTILS=On ^
   ..
