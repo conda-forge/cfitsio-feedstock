@@ -9,6 +9,7 @@ extra_cmake_args=(
     -DUSE_BZIP2=On
     -DUSE_CURL=On
     -DUSE_PTHREADS=On
+    -DCMAKE_PREFIX_PATH=$PREFIX
 )
 
 if [ $(uname) = Darwin ] ; then
