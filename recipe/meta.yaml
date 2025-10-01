@@ -1,6 +1,6 @@
 {% set name = "cfitsio" %}
-{% set version = "4.6.2" %}
-{% set sha256 = "66fd078cc0bea896b0d44b120d46d6805421a5361d3a5ad84d9f397b1b5de2cb" %}
+{% set version = "4.6.3" %}
+{% set sha256 = "fad44fff274fdda5ffcc0c0fff3bc3c596362722b9292fc8944db91187813600" %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,7 @@ source:
     - windows-sys-time.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
   ignore_run_exports_from:
