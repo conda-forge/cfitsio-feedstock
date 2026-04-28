@@ -1,6 +1,6 @@
 {% set name = "cfitsio" %}
-{% set version = "4.6.3" %}
-{% set sha256 = "fad44fff274fdda5ffcc0c0fff3bc3c596362722b9292fc8944db91187813600" %}
+{% set version = "4.6.4" %}
+{% set sha256 = "227b637b91c9820ea96f39a65eb087f053de567d82f4338e2884f123f8183c55" %}
 
 package:
   name: {{ name }}
