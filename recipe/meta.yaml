@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
   ignore_run_exports_from:
@@ -61,4 +61,3 @@ about:
 extra:
   recipe-maintainers:
     - pkgw
-    - teake
