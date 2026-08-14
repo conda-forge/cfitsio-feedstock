@@ -1,6 +1,6 @@
 {% set name = "cfitsio" %}
-{% set version = "4.6.4" %}
-{% set sha256 = "227b637b91c9820ea96f39a65eb087f053de567d82f4338e2884f123f8183c55" %}
+{% set version = "4.7.0" %}
+{% set sha256 = "ce573bbea8e75b429f8c3d3e86498741ba3dc9628a1530d2f65268397ad059e8" %}
 
 package:
   name: {{ name }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('cfitsio', max_pin='x.x.x') }}
   ignore_run_exports_from:
